@@ -36,3 +36,35 @@ brooklyn_data.each do |bk|
     Graffiti.create({location_id: brooklyn.id, address: bk[17], open: false })
   end
 end
+
+bronx_data.each do |bx|
+  if bx[27] == "Open"
+    Graffiti.create({location_id: bronx.id, address: bx[17], open: true })
+  else
+    Graffiti.create({location_id: bronx.id, address: bx[17], open: false })
+  end
+end
+
+manhattan_data.each do |mh|
+  if mh[27] == "Open"
+    Graffiti.create({location_id: manhattan.id, address: mh[17], open: true })
+  else
+    Graffiti.create({location_id: manhattan.id, address: mh[17], open: false })
+  end
+end
+
+queens_data.each do |q|
+  if q[27] == "Open"
+    Graffiti.create({location_id: queens.id, address: q[17], open: true })
+  else
+    Graffiti.create({location_id: queens.id, address: q[17], open: false })
+  end
+end
+
+staten_island_data.each do |si|
+  if si[27] == "Open"
+    Graffiti.create({location_id: staten_island.id, address: si[17], open: true })
+  else
+    Graffiti.create({location_id: staten_island.id, address: si[17], open: false })
+  end
+end
