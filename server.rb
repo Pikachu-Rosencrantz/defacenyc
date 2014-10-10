@@ -7,23 +7,26 @@ require_relative './lib/models'
 require 'active_support'
 
 after do
-  ActiveRecord::Base.connection.close
+	ActiveRecord::Base.connection.close
 end
 
-get("/")
-	file.open
-end
+
 
 get("/:borough")
-	graffiti.where(location_id: params[borough])
+Graffiti.where(location_id: params[borough])
 end
 
 get("/grafffiti")
-	grafffiti.all.order(id: description)
+if(params[:limit] ! = "")
+	Grafffiti.all.order(id: :desc).limit(params[:limit].to_i).order(id: :desc)
+else
+	Grafffiti.all.order(id: :desc)
+end
+
 end
 
 get("/graffiti/:id")
-	graffiti.find(params[:id])
+Graffiti.find(params[:id])
 end
 
 put("/graffiti/:id")
@@ -35,7 +38,7 @@ post("/graffiti")
 end
 
 get("/images")
-	graffiti.where
+graffiti.where
 end	
 
 get '/' do
