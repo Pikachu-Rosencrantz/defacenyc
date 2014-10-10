@@ -15,13 +15,11 @@ Graffiti.where(location_id: params[borough])
 end
 
 get("/grafffiti") do
-binding.pry
-if(params[:limit] ! = "")
-	Grafffiti.all.order(id: :desc).limit(params[:limit].to_i).order(id: :desc)
-else
-	Grafffiti.all.order(id: :desc)
-end
-
+	if(params[:limit] ! = "")
+		Grafffiti.all.order(id: :desc).limit(params[:limit].to_i).order(id: :desc)
+	else
+		Grafffiti.all.order(id: :desc)
+	end
 end
 
 get("/graffiti/:id") do
