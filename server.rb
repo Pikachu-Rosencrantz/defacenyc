@@ -1,10 +1,14 @@
 
-require 'sinatra'
+require 'bundler/setup'
+Bundler.require(:default)
 require 'pry'
 require_relative './config/environments'
 require_relative './lib/models'
 require 'active_support'
 
+after do
+  ActiveRecord::Base.connection.close
+end
 
 get("/")
 	file.open
