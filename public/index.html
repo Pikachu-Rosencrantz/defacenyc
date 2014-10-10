@@ -1,8 +1,62 @@
 <html>
 <head>
 	<title>DEFACE::NYC</title>
+	<script src="./javascripts/jquery.js"></script>
+	<script src='./javascripts/underscore.js'></script>
+	<script src='./javascripts/backbone.js'></script>
+	<script src='./javascripts/scripts.js'></script>
+	<link rel="stylesheet" type="text/css" href="./stylesheets/styles.css">
+	<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+	<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+	<script type="text/template" id="modalTemplate">
+	
+	<div class="modal-header">
+
+	<h4 class="modal-title modalName" id="myModalLabel"><%=item.address%></h4>
+	</div>
+	<div class="modal-body">
+
+	<ul>
+	<li> <div id = "map-canvas-2"></div></li>
+	<ul>
+
+		<p>Image and another map will probably go here at some point?</p>
+
+
+	</div>
+	<div class="modal-footer">
+	<i class ="fa fa-trash fa-3x trash" data-dismiss="modal"></i>
+	<button type="button" class="btn btn-default closeModal" data-dismiss="modal">Close</button>
+	<button type="button" class="btn btn-primary saveChanges">Save changes</button>
+
+
+	</div>
+	</script>
+
+
+
+
+
+</script>
+
+
+
 </head>
 <body>
+		<div class="modal fade" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
 
+			</div>
+		</div>
+	</div>
+	<!-- 	<div class = "theMap"> -->
+	<div id="map-canvas"></div>
+	<!-- 	</div> -->
+
+
+
+	<script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
 </body>
 </html>

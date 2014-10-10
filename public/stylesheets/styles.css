@@ -1,0 +1,12 @@
+#map-canvas{
+	height:80%;
+	border-radius: 10px;
+}
+#map-canvas-2{
+	height:35%;
+	width:35%;
+	border-radius:5px;
+}
+li{
+	list-style-type: none;
+}

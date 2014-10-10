@@ -103,4 +103,3 @@ staten_island_data.each do |si|
   end
 end
 
-binding.pry

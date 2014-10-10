@@ -6,7 +6,7 @@
 require 'active_record'
  
 configure :production, :development do
-	db = URI.parse(ENV['DATABASE_URL'] || 'postgres://localhost/deface_nyc')
+	db = URI.parse(ENV['DATABASE_URL'] || 'postgres://localhost/defacenyc')
  
 	ActiveRecord::Base.establish_connection(
 			:adapter => db.scheme == 'postgres' ? 'postgresql' : db.scheme,

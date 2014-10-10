@@ -11,5 +11,7 @@ class Location < ActiveRecord::Base
 end
 
 class Status < ActiveRecord::Base
+	
+	
 
 end
