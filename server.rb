@@ -1,11 +1,10 @@
-require 'bundler/setup'
-Bundler.require(:default)
 
 require 'sinatra'
 require 'pry'
 require_relative './config/environments'
 require_relative './lib/models'
 require 'active_support'
+
 
 get("/")
 	file.open
@@ -34,3 +33,9 @@ end
 get("/images")
 	graffiti.where
 end	
+
+get '/' do
+	
+	File.open('./public/index.html')
+
+end
