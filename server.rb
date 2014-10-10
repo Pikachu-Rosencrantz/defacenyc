@@ -11,15 +11,15 @@ after do
 end
 
 get("/:borough") do
-Graffiti.where(location_id: params[borough])
+Graffiti.where(location_id: params[borough]).to_json
 end
 
 get("/grafffiti") do
 binding.pry
 if(params[:limit] ! = "")
-	Grafffiti.all.order(id: :desc).limit(params[:limit].to_i).order(id: :desc)
+	Grafffiti.all.order(id: :desc).limit(params[:limit].to_i).order(id: :desc).to_json
 else
-	Grafffiti.all.order(id: :desc)
+	Grafffiti.all.order(id: :desc).to_json
 end
 
 end
@@ -37,7 +37,7 @@ post("/graffiti")
 end
 
 get("/images") do
-graffiti.where
+# graffiti.where
 end	
 
 get '/' do
