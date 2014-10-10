@@ -6,8 +6,8 @@ location_id integer,
 artist_id integer,
 address text,
 photo_url text,
-latitude integer,
-longitude integer
+latitude text,
+longitude text
 );
 
 CREATE TABLE graffiti_artists(
