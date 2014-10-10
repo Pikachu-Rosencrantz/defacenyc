@@ -1,22 +1,21 @@
 
 require 'bundler/setup'
 Bundler.require(:default)
-require 'pry'
 require_relative './config/environments'
 require_relative './lib/models'
 require 'active_support'
+require 'pry'
 
 after do
 	ActiveRecord::Base.connection.close
 end
 
-
-
-get("/:borough")
+get("/:borough") do
 Graffiti.where(location_id: params[borough])
 end
 
-get("/grafffiti")
+get("/grafffiti") do
+binding.pry
 if(params[:limit] ! = "")
 	Grafffiti.all.order(id: :desc).limit(params[:limit].to_i).order(id: :desc)
 else
@@ -25,11 +24,11 @@ end
 
 end
 
-get("/graffiti/:id")
+get("/graffiti/:id") do
 Graffiti.find(params[:id])
 end
 
-put("/graffiti/:id")
+put("/graffiti/:id") do
 
 end
 
@@ -37,7 +36,7 @@ post("/graffiti")
 
 end
 
-get("/images")
+get("/images") do
 graffiti.where
 end	
 
