@@ -10,29 +10,31 @@ after do
 	ActiveRecord::Base.connection.close
 end
 
-get("/:borough") do
-Graffiti.where(location_id: params[borough]).to_json
+get '/' do
+	
+	File.open('./public/index.html')
+
 end
 
 get("/grafffiti") do
-binding.pry
-if(params[:limit] ! = "")
-	Grafffiti.all.order(id: :desc).limit(params[:limit].to_i).order(id: :desc).to_json
-else
-	Grafffiti.all.order(id: :desc).to_json
-end
+	binding.pry
+	if(params[:limit] != "")
+		Grafffiti.all.order(id: :desc).limit(params[:limit].to_i).order(id: :desc).to_json
+	else
+		Grafffiti.all.order(id: :desc).to_json
+	end
 
 end
 
 get("/graffiti/:id") do
-Graffiti.find(params[:id])
+	Graffiti.find(params[:id])
 end
 
 put("/graffiti/:id") do
 
 end
 
-post("/graffiti")
+post("/graffiti") do
 
 end
 
@@ -40,8 +42,6 @@ get("/images") do
 # graffiti.where
 end	
 
-get '/' do
-	
-	File.open('./public/index.html')
-
+get("/:borough") do
+	Graffiti.where(location_id: params[borough]).to_json
 end
