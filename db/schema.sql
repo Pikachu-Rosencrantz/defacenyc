@@ -6,8 +6,8 @@ location_id integer,
 artist_id integer,
 address text,
 photo_url text,
-latitude integer,
-longitude integer
+latitude varchar(255),
+longitude varchar(255)
 );
 
 CREATE TABLE graffiti_artists(
@@ -26,4 +26,3 @@ open boolean,
 resolution text,
 graffiti_id integer
 );
-

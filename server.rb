@@ -10,7 +10,7 @@ after do
 end
 
 get '/' do
-	
+
 	File.open('./public/index.html')
 
 end
@@ -39,8 +39,8 @@ end
 
 get("/images") do
 # graffiti.where
-end	
+end
 
 get("/:borough") do
-	Graffiti.where(location_id: params[borough]).to_json
+	Graffiti.where(location_id: params[:borough]).to_json
 end

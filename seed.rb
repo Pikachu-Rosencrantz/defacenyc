@@ -1,7 +1,7 @@
 
 require 'json'
 require 'pry'
-require_relative './connection'
+require_relative './db/connection'
 
 class GraffitiArtist < ActiveRecord::Base
 
@@ -59,7 +59,7 @@ brooklyn_data.each do |bk|
     Status.create({open:true, graffiti_id: graffiti.id})
   else
     graffiti = Graffiti.create({location_id: brooklyn.id, address: bk[17], latitude:bk[57], longitude:bk[58]})
-    Status.create({open:false, graffiti_id: graffiti.id})  
+    Status.create({open:false, graffiti_id: graffiti.id})
   end
 end
 
@@ -69,7 +69,7 @@ bronx_data.each do |bx|
     Status.create({open:true, graffiti_id: graffiti.id})
   else
     graffiti = Graffiti.create({location_id: bronx.id, address: bx[17], latitude:bx[57], longitude:bx[58]})
-    Status.create({open:false, graffiti_id: graffiti.id})  
+    Status.create({open:false, graffiti_id: graffiti.id})
   end
 end
 
@@ -79,7 +79,7 @@ manhattan_data.each do |mh|
     Status.create({open:true, graffiti_id: graffiti.id})
   else
     graffiti = Graffiti.create({location_id: manhattan.id, address: mh[17], latitude:mh[57], longitude:mh[58]})
-    Status.create({open:false, graffiti_id: graffiti.id})  
+    Status.create({open:false, graffiti_id: graffiti.id})
   end
 end
 
@@ -89,7 +89,7 @@ queens_data.each do |q|
     Status.create({open:true, graffiti_id: graffiti.id})
   else
     graffiti = Graffiti.create({location_id: queens.id, address: q[17], latitude:q[57], longitude:q[58]})
-    Status.create({open:false, graffiti_id: graffiti.id})  
+    Status.create({open:false, graffiti_id: graffiti.id})
   end
 end
 
@@ -99,7 +99,7 @@ staten_island_data.each do |si|
     Status.create({open:true, graffiti_id: graffiti.id})
   else
     graffiti = Graffiti.create({location_id: staten_island.id, address: si[17], latitude:si[57], longitude:si[58]})
-    Status.create({open:false, graffiti_id: graffiti.id})  
+    Status.create({open:false, graffiti_id: graffiti.id})
   end
 end
 
