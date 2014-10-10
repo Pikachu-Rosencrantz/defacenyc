@@ -19,14 +19,17 @@
 
 	<ul>
 	<li> <div id = "map-canvas-2"></div></li>
+	<li><%if(item.photo_url){%><img src="<%=item.photo_url%>" height="150" width="150"><%}%></li>
 	<ul>
+	<span class="image_url"></span>
 
-		<p>Image and another map will probably go here at some point?</p>
+
 
 
 	</div>
 	<div class="modal-footer">
 	<i class ="fa fa-trash fa-3x trash" data-dismiss="modal"></i>
+	<%if(!item.photo_url){%><button type="button" class="btn btn-default addImage">Add Image</button><%}%>
 	<button type="button" class="btn btn-default closeModal" data-dismiss="modal">Close</button>
 	<button type="button" class="btn btn-primary saveChanges">Save changes</button>
 

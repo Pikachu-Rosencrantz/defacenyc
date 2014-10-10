@@ -11,7 +11,18 @@ var MapCollection = Backbone.Collection.extend({
 var ModalView = Backbone.View.extend({
 	tagName:"div",
 	events: {
-		
+		'click button.addImage': 'addImage',
+		'click button.addIt': 'addIt'
+	},
+
+	addImage: function(){
+		$('.image_url').html('<input type="text" class="theImage" placeholder="image_url"><button class="addIt">Add Image</button>')
+	},
+	addIt: function(){
+		console.log($('.theImage').val())
+		this.model.set('photo_url', $('.theImage').val())
+		this.model.save()
+
 	},
 
 	initialize: function(){
@@ -31,7 +42,7 @@ var ModalView = Backbone.View.extend({
 		var latlng = new google.maps.LatLng(this.model.attributes.latitude,this.model.attributes.longitude);
 		console.log(latlng)
 		var mapOptions = {
-			zoom:14,
+			zoom:13,
 			center:latlng
 		}
 		console.log(mapOptions)
@@ -49,7 +60,7 @@ var ModalView = Backbone.View.extend({
 			map.setCenter(latlng);
 		});
 
-
+		this.delegateEvents()
 	}
 
 })

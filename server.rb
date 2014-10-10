@@ -38,13 +38,14 @@ put("/graffiti/:id") do
 		address:params["address"],
 		photo_url:params["photo_url"],
 		location_id:params["location_id"],
-		artist_id:param["artist_id"]
+		artist_id:params["artist_id"]
 	}
 
-	edit_graffiti = Graffiti.find_by({id: params[:id]}.to_i)
+	edit_graffiti = Graffiti.find_by({id: params[:id].to_i})
+
 	edit_graffiti.update(graffiti_hash_edited)
 	
-	edit_graffiti_hash.to_json
+	edit_graffiti.to_json
 end
 
 post("/graffiti") do
