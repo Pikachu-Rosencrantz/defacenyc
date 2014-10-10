@@ -1,4 +1,3 @@
-
 require 'bundler/setup'
 Bundler.require(:default)
 require_relative './config/environments'
@@ -16,19 +15,12 @@ get '/' do
 
 end
 
-get("/grafffiti") do
-
-	if(params[:limit] ! = "")
-		Grafffiti.all.order(id: :desc).limit(params[:limit].to_i).order(id: :desc)
-	else
-		Grafffiti.all.order(id: :desc)
-	end
-
+get("/graffiti") do
 	binding.pry
-	if(params[:limit] != "")
-		Grafffiti.all.order(id: :desc).limit(params[:limit].to_i).order(id: :desc).to_json
+	if(params[:limit] != nil)
+		Graffiti.all.order(id: :desc).limit(params[:limit].to_i).order(id: :desc).to_json
 	else
-		Grafffiti.all.order(id: :desc).to_json
+		Graffiti.all.order(id: :desc).to_json
 	end
 
 end
