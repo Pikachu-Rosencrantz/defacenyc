@@ -37,6 +37,13 @@ post("/graffiti") do
 
 end
 
+post("/graffiti/:id") do
+	graffiti_id = params[:id]
+	graffiti_info = Graffiti.find(graffiti_id)
+	graffiti_info.to_json
+end
+
+
 get("/images") do
 # graffiti.where
 end

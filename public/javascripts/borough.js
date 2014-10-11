@@ -7,12 +7,41 @@ submit_borough.on('click', function(){
   // debugger;
   $.get('http://localhost:9292/' + borough, function(data){
     $('body').append('<table class="table table-striped" id="locations"></table>');
-    $('#locations').append('<tr><th>Address</th><th>Artist</th></tr>');
+    $('#locations').append('<tr data-toggle="modal" data-target="#myModal"><th>Address</th><th>Artist</th></tr>');
     // debugger;
     data = JSON.parse(data);
 
     for(var i=0;i<data.length;i++){
-$('#locations').append('<tr><td>'+data[i]['address']+'</td>'+'<td>'+data[i]['artist_id']+'</td></tr>');
+$('#locations').append('<tr id="'+ data[i]["id"] + '"><td>'+data[i]['address']+'</td>'+'<td>'+data[i]['artist_id']+'</td></tr>');
     }
+$('tr').click(function(){
+  var value = $(this).text();
+  var graffiti = this.id;
+  console.log(graffiti);
+  console.log(typeof graffiti);
+  $.post('http://localhost:9292/graffiti/' + graffiti, function(data){
+    console.log(data);
+  });
+  })
+
+    // var table = document.querySelector('table');
+    // table.addEventListener('click', function(e){
+    //   console.log(e);
+    //   console.log(this);
+    // })
   })
 })
+
+// var table_row = $('#table_row');
+// data[i].click(function(e){$('#myModal').modal('toggle'); console.log(e); console.log(this);
+// });
+// $(function() {
+//
+//
+// });
+
+
+
+// <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+//   Launch demo modal
+// </button>
