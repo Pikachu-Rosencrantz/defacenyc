@@ -18,6 +18,7 @@
 	<div class="modal-body">
 
 	<ul>
+	<li>Status: <%if(item.status.open === true){%> Open<%}else{%>Closed<%}%></li>
 	<li> <div id = "map-canvas-2"></div></li>
 	<li><%if(item.photo_url){%><img src="<%=item.photo_url%>" height="150" width="150"><%}%></li>
 	<ul>

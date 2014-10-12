@@ -17,9 +17,9 @@ get("/graffiti") do
 	content_type :json
 
 	if(params[:limit] != nil)
-		Graffiti.all.order(id: :desc).limit(params[:limit].to_i).order(id: :desc).to_json
+		Graffiti.all.order(id: :desc).limit(params[:limit].to_i).order(id: :desc).to_json(:include => :status)
 	else
-		Graffiti.all.order(id: :desc).to_json
+		Graffiti.all.order(id: :desc).to_json(:include => :status)
 	end
 
 end
@@ -65,7 +65,7 @@ end
 get("/images") do
 	content_type :json
 
-	Graffiti.where(id: params[:photo_url]).to_json
+	Graffiti.where('photo_url is NOT NULL').to_json
 end	
 
 get("/:borough") do

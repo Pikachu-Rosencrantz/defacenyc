@@ -33,7 +33,7 @@ var ModalView = Backbone.View.extend({
 	},
 
 	render:function(){
-		console.log(this.model.attributes.address)
+
 		var myTemplate = this.template({item: this.model.attributes})
 		this.$el.html(myTemplate);
 		$('.modal-content').empty()

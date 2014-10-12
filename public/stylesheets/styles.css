@@ -1,9 +1,10 @@
 #map-canvas{
 	height:80%;
+	margin:50px;
 	border-radius: 10px;
 }
 #map-canvas-2{
-	height:35%;
+	height:25%;
 	width:35%;
 	border-radius:5px;
 }
