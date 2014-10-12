@@ -30,12 +30,16 @@ $('tr').click(function(){
     }
 
     if (info.photo_url){
-      var photo = "<img src="+info.photo_url+" width='100' height='100'>"
+      var photo = "<img id='graffiti_image' src="+info.photo_url+" width='100' height='100'>"
     } else { photo = ""}
     $('.modal-title').html('<h4>'+info["address"]+'</h4>');
 
     $('.modal-body').html('<div id="graffiti_map"><img src="https://maps.googleapis.com/maps/api/staticmap?center='+info["latitude"]+','+info["longitude"]+'&zoom=16&size=200x200&markers=color:blue%7Clabel:S%7C'+ info["latitude"] +','+ info["longitude"]+'"  ><h6>Graffiti Case status</h6><p>'+status+'</p></div>'+"<div id='graffiti_info'>"+photo+"</div><br />"
     );
+
+    // $('#graffiti_image').popover({html: 'true', content: '<img src="'+photo+'"height="400" width="400">'});
+    // $('#graffiti_image').popover('show');
+
 
   $('.addImg').click(function(){
     $('input').remove();
@@ -57,10 +61,8 @@ $('tr').click(function(){
 
   });
 
-
-    // var img = document.getElementById('#AddImg');
-    // img.addEventListener('click', function(){})
     $('#myModal').modal('toggle');
+
     console.log(data);
   });
   })
