@@ -65,7 +65,7 @@ end
 post("/graffiti/:id") do
 	graffiti_id = params[:id]
 	graffiti_info = Graffiti.find(graffiti_id)
-	graffiti_info.to_json
+	graffiti_info.to_json(:include => :status)
 end
 
 
@@ -78,5 +78,5 @@ end
 get("/:borough") do
 	content_type :json
 
-	Graffiti.where(location_id: params[:borough]).to_json
+	Graffiti.where(location_id: params[:borough]).to_json(:include => :status)
 end

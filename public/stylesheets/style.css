@@ -6,3 +6,11 @@ body {
 table {
   margin-top: 15px;
 }
+
+.modal img {
+  float:left;
+}
+
+/*.modal h6 {
+  float: right;
+}*/

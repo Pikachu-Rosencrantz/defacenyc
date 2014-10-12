@@ -8,7 +8,7 @@ class GraffitiArtist < ActiveRecord::Base
 end
 
 class Graffiti < ActiveRecord::Base
- self.has_one(:graffitiartists)
+ self.has_one(:graffitiartist)
  self.has_many(:locations)
  self.has_one(:status)
 end
@@ -18,7 +18,7 @@ class Location < ActiveRecord::Base
 end
 
 class Status < ActiveRecord::Base
-  self.has_one(:graffitis)
+  self.has_one(:graffiti)
 end
 
 

@@ -6,13 +6,8 @@ location_id integer,
 artist_id integer,
 address text,
 photo_url text,
-<<<<<<< HEAD
-latitude varchar(255),
-longitude varchar(255)
-=======
 latitude text,
 longitude text
->>>>>>> 4f45520d1d4454ec1f7191f30a0fc14adbd99f5e
 );
 
 CREATE TABLE graffiti_artists(
