@@ -18,9 +18,9 @@
 	<div class="modal-body">
 
 	<ul>
-	<li>Status: <%if(item.status.open === true){%> Open<%}else{%>Closed<%}%></li>
+	<li>Status: <%if(item.status.open === true){%> Open<%}else{%>Closed<%}%> <a href="#" class="editStatus">Toggle</a></li>
 	<li> <div id = "map-canvas-2"></div></li>
-	<li><%if(item.photo_url){%><img src="<%=item.photo_url%>" height="150" width="150"><%}%></li>
+	<li><%if(item.photo_url){%><img src="<%=item.photo_url%>" height="150" width="150" class="graffitiImage" data=toggle="tooltip"><%}%></li>
 	<ul>
 	<span class="image_url"></span>
 
@@ -32,10 +32,14 @@
 	<i class ="fa fa-trash fa-3x trash" data-dismiss="modal"></i>
 	<%if(!item.photo_url){%><button type="button" class="btn btn-default addImage">Add Image</button><%}%>
 	<button type="button" class="btn btn-default closeModal" data-dismiss="modal">Close</button>
-	<button type="button" class="btn btn-primary saveChanges">Save changes</button>
 
 
 	</div>
+	</script>
+	<script type="text/template" id="formTemplate">
+	<input type="text" placeholder="">
+
+
 	</script>
 
 
@@ -56,11 +60,13 @@
 		</div>
 	</div>
 	<!-- 	<div class = "theMap"> -->
+	<button id="makeHeat">Toggle Heat Map</button>
+	<ul id="graffitiList"></ul>
 	<div id="map-canvas"></div>
 	<!-- 	</div> -->
 
 
 
-	<script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=visualization"></script>
 </body>
 </html>

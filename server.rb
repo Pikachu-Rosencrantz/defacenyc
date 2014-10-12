@@ -34,6 +34,8 @@ end
 put("/graffiti/:id") do
 	content_type :json
 
+
+
 	graffiti_hash_edited = {
 		address:params["address"],
 		photo_url:params["photo_url"],
@@ -42,6 +44,10 @@ put("/graffiti/:id") do
 	}
 
 	edit_graffiti = Graffiti.find_by({id: params[:id].to_i})
+
+	edit_status = Status.find(params[:status][:id])
+	edit_status.open = params[:status][:open]
+	edit_status.save
 
 	edit_graffiti.update(graffiti_hash_edited)
 	
@@ -59,6 +65,7 @@ post("/graffiti") do
 	}
 
 	new_graffiti = Graffiti.create(graffiti_hash_new)
+	new_status = Status.create({open:true})
 	new_graffiti.to_json
 end
 

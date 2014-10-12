@@ -11,3 +11,8 @@
 li{
 	list-style-type: none;
 }
+
+.popover {
+    max-height:450px !important;
+    max-width:450px !important;
+}
