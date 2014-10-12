@@ -19,7 +19,8 @@ $('tr').click(function(){
   var graffiti = this.id;
   $.post('http://localhost:9292/graffiti/' + graffiti, function(data){
     var info = JSON.parse(data);
-    $('.modal-body').html('<img src="https://maps.googleapis.com/maps/api/staticmap?center='+info["latitude"]+','+info["longitude"]+'&zoom=17&size=200x200&markers=color:blue%7Clabel:S%7C'+ info["latitude"] +','+ info["longitude"]+'"  >');
+    $('.modal-title').html('<h4>'+info["address"]+'</h4>');
+    $('.modal-body').html('<img src="https://maps.googleapis.com/maps/api/staticmap?center='+info["latitude"]+','+info["longitude"]+'&zoom=16&size=200x200&markers=color:blue%7Clabel:S%7C'+ info["latitude"] +','+ info["longitude"]+'"  >');
     $('#myModal').modal('toggle');
     console.log(data);
   });
