@@ -64,7 +64,7 @@ end
 get("/images") do
 	content_type :json
 
-	Graffiti.where(id: params[:photo_url]).to_json
+	Graffiti.where('photo_url is NOT NULL').to_json
 end	
 
 get("/:borough") do
