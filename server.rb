@@ -33,17 +33,18 @@ get("/graffiti/:id") do
 end
 
 put("/graffiti/:id") do
+	binding.pry
 	content_type :json
 
 	graffiti_hash_edited = {
 		address:params["address"],
 		photo_url:params["photo_url"],
 		location_id:params["location_id"],
-		artist_id:param["artist_id"]
+		artist_id:params["artist_id"]
 	}
 
-	edit_graffiti = Graffiti.find_by({id: params[:id]}.to_i)
-	edit_graffiti.update(graffiti_hash_edited)
+	edit_graffiti = Graffiti.find_by({id: params[:id].to_i})
+	edit_graffiti_hash = edit_graffiti.update(graffiti_hash_edited)
 
 	edit_graffiti_hash.to_json
 end

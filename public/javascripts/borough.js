@@ -1,6 +1,7 @@
 
 var submit_borough = $('#go');
-
+var img = $('.addImg');
+var img_input = $('input');
 submit_borough.on('click', function(){
   var borough = $('#boroughs').val();
   $('#locations').html(" ");
@@ -22,14 +23,39 @@ $('tr').click(function(){
   var value = $(this).text();
   var graffiti = this.id;
   $.post('http://localhost:9292/graffiti/' + graffiti, function(data){
-
     var info = JSON.parse(data);
     var status = "Open"
     if (info.status.open == false){
       var status = "Closed"
     }
     $('.modal-title').html('<h4>'+info["address"]+'</h4>');
-    $('.modal-body').html('<img src="https://maps.googleapis.com/maps/api/staticmap?center='+info["latitude"]+','+info["longitude"]+'&zoom=16&size=200x200&markers=color:blue%7Clabel:S%7C'+ info["latitude"] +','+ info["longitude"]+'"  >'+"<h6>Graffiti Case status</h6>"+status+"</h6>");
+
+    $('.modal-body').html('<img src="https://maps.googleapis.com/maps/api/staticmap?center='+info["latitude"]+','+info["longitude"]+'&zoom=16&size=200x200&markers=color:blue%7Clabel:S%7C'+ info["latitude"] +','+ info["longitude"]+'"  >'+"<h6>Graffiti Case status</h6>"+status+"</h6><br />"
+    );
+
+  $('.addImg').click(function(){
+    $('input').remove();
+    $('#submit_img').remove();
+    $('.modal-body').append('<input type="text"></input><button id="submit_img">Submit Image</button>');
+    $('#submit_img').click(function(){
+      var url = $('input').val();
+      var modal_graffiti = info.id
+
+      $.ajax({
+        type: "PUT",
+        url: 'http://localhost:9292/graffiti/'+ modal_graffiti,
+        data: {address: info.address, photo_url: url, location_id: info.location_id, artist_id: info.artist_id},
+        success: function(){console.log('sent url')},
+        dataType: 'json'
+       });
+      });
+
+
+  });
+
+
+    // var img = document.getElementById('#AddImg');
+    // img.addEventListener('click', function(){})
     $('#myModal').modal('toggle');
     console.log(data);
   });
