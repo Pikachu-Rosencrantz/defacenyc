@@ -28,9 +28,13 @@ $('tr').click(function(){
     if (info.status.open == false){
       var status = "Closed"
     }
+
+    if (info.photo_url){
+      var photo = "<img src="+info.photo_url+" width='100' height='100'>"
+    } else { photo = ""}
     $('.modal-title').html('<h4>'+info["address"]+'</h4>');
 
-    $('.modal-body').html('<img src="https://maps.googleapis.com/maps/api/staticmap?center='+info["latitude"]+','+info["longitude"]+'&zoom=16&size=200x200&markers=color:blue%7Clabel:S%7C'+ info["latitude"] +','+ info["longitude"]+'"  >'+"<h6>Graffiti Case status</h6>"+status+"</h6><br />"
+    $('.modal-body').html('<div id="graffiti_map"><img src="https://maps.googleapis.com/maps/api/staticmap?center='+info["latitude"]+','+info["longitude"]+'&zoom=16&size=200x200&markers=color:blue%7Clabel:S%7C'+ info["latitude"] +','+ info["longitude"]+'"  ><h6>Graffiti Case status</h6><p>'+status+'</p></div>'+"<div id='graffiti_info'>"+photo+"</div><br />"
     );
 
   $('.addImg').click(function(){
