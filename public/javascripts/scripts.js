@@ -189,23 +189,23 @@ $(function(){
 		}
 
 	})
-	var graffitiCollection = new GraffitiCollection()
-	var getCount = new GraffitiCollection()
-	getCount.fetch().done(function(){
-		console.log('hello')
-		var pages = Math.ceil(getCount.length/10)
+// 	var graffitiCollection = new GraffitiCollection()
+// 	var getCount = new GraffitiCollection()
+// 	getCount.fetch().done(function(){
+// 		console.log('hello')
+// 		var pages = Math.ceil(getCount.length/10)
 		
-		var page=1;
-		if(page <= pages){
+// 		var page=1;
+// 		if(page <= pages){
 
-			var listView = new GraffitiListView({collection: graffitiCollection, el:'#graffitiList',limit:10, page:page, pages:pages})
-}
-
-
+// 			// var listView = new GraffitiListView({collection: graffitiCollection, el:'#graffitiList',limit:10, page:page, pages:pages})
+// }
 
 
 
-})
+
+
+// })
 	var markers = []
 	var toggle = false
 	var map =  new google.maps.Map(document.getElementById('map-canvas'));

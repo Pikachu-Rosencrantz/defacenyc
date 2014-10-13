@@ -85,5 +85,5 @@ end
 get("/:borough") do
 	content_type :json
 
-	Graffiti.where(location_id: params[:borough]).to_json
+	Graffiti.where(location_id: params[:borough]).to_json(:include => :status)
 end

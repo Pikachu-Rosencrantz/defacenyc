@@ -1,6 +1,9 @@
+@import url(http://fonts.googleapis.com/css?family=Russo+One);
+
 #map-canvas{
-	height:80%;
-	margin:50px;
+	height:70%;
+	width:100%;
+	margin:0px;
 	border-radius: 10px;
 }
 #map-canvas-2{
@@ -11,8 +14,120 @@
 li{
 	list-style-type: none;
 }
+#map{
+	text-align: center;
+}
 
 .popover {
     max-height:450px !important;
     max-width:450px !important;
+}
+
+
+body{
+  background-image: url("http://38.media.tumblr.com/ed1c94286bb054319167dcbb5938abfc/tumblr_mhaynalY7y1qzbn7lo1_500.gif");
+  background-repeat: no-repeat;
+  background-size: cover;
+  max-width: 600px;
+}
+h1{
+	color:#ffffff;
+  text-align: center;
+  font-size: 70px;
+  font-family: Russo One;
+  text-shadow: -0.06em 0 0 red, 0.06em 0 0 black;
+}
+.middle .navigation .navbarCollapse .nav navbar-nav .active{
+  margin-left: 20%;
+  text-align: center;
+}
+.middle{
+  text-align: center;
+}
+.banner-text{
+  position:absolute;
+  text-align:center;
+}
+.intro {
+  min-height: 400px;
+  min-width: 400px;
+  background: rgba(0, 1, 0, 0.4);
+  color: rgba(255, 253, 255, 0.8);
+}
+.navbar-default {
+  background-color: #ffffff;
+  border-color: #000000;
+  opacity: 0.8;
+}
+.navbar-default .navbar-brand {
+  color: #000000;
+}
+.navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus {
+  color: #ffffff;
+}
+.navbar-default .navbar-text {
+  color: #000000;
+}
+.navbar-default .navbar-nav > li > a {
+  color: #000000;
+}
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+  color: #FF0000;
+}
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
+  color: #FF0000;
+  background-color: #000000;
+}
+.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
+  color: #ffffff;
+  background-color: #000000;
+}
+.navbar-default .navbar-toggle {
+  border-color: #000000;
+}
+.navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
+  background-color: #FF0000;
+}
+.navbar-default .navbar-toggle .icon-bar {
+  background-color: #000000;
+}
+.navbar-default .navbar-collapse,
+.navbar-default .navbar-form {
+  border-color: #000000;
+}
+.navbar-default .navbar-link {
+  color: #000000;
+}
+.navbar-default .navbar-link:hover {
+  color: #ffffff;
+}
+@media (max-width: 767px) {
+  .navbar-default .navbar-nav .open .dropdown-menu > li > a {
+    color: #000000;
+  }
+  .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover, .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
+    color: #ffffff;
+  }
+  .navbar-default .navbar-nav .open .dropdown-menu > .active > a, .navbar-default .navbar-nav .open .dropdown-menu > .active > a:hover, .navbar-default .navbar-nav .open .dropdown-menu > .active > a:focus {
+    color: #ffffff;
+    background-color: #000000;
+  }
+}
+#splashScreen img{
+    margin:0 auto;
+}
+
+#splashScreen{
+    position:absolute;
+    top:0;
+    left:0;
+    height:100%;
+    width:100%;
+    background-color:#252525;
+    background-repeat:no-repeat;
+    text-align:center;
+}
+
+#makeHeat{
+	cursor:pointer;
 }
