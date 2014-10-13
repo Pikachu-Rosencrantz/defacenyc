@@ -11,7 +11,7 @@ after do
 end
 
 get("/") do
-	File.open('./public/index.html')
+	File.open('/public/index.html')
 end
 
 get("/graffiti") do
