@@ -33,7 +33,6 @@ get("/graffiti/:id") do
 end
 
 put("/graffiti/:id") do
-	binding.pry
 	content_type :json
 
 	graffiti_hash_edited = {
@@ -42,6 +41,10 @@ put("/graffiti/:id") do
 		location_id:params["location_id"],
 		artist_id:params["artist_id"]
 	}
+
+	edit_status = Status.find(params[:status][:id])
+	edit_status.open = params[:status][:open]
+	edit_status.save
 
 	edit_graffiti = Graffiti.find_by({id: params[:id].to_i})
 	edit_graffiti_hash = edit_graffiti.update(graffiti_hash_edited)

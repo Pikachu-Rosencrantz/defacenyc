@@ -36,7 +36,29 @@ $('tr').click(function(){
 
     $('.modal-body').html('<div id="graffiti_map"><img src="https://maps.googleapis.com/maps/api/staticmap?center='+info["latitude"]+','+info["longitude"]+'&zoom=16&size=200x200&markers=color:blue%7Clabel:S%7C'+ info["latitude"] +','+ info["longitude"]+'"  ><h6>Graffiti Case status</h6><p>'+status+'</p></div>'+"<div id='graffiti_info'>"+photo+"</div><br />"
     );
-
+    var statchange = $('p');
+    statchange.click(function(){
+      if ($('p').text() == "Open"){
+        var modal_graffiti = info.id
+        $.ajax({
+          type: "PUT",
+          url: 'http://localhost:9292/graffiti/'+ modal_graffiti,
+          data: {address: info.address, location_id: info.location_id, artist_id: info.artist_id, status: {id: info.id, open: false}},
+          success: function(){console.log('sent url')},
+          dataType: 'json'
+        })
+        $('p').text("Closed");
+      } else {
+        $.ajax({
+          type: "PUT",
+          url: 'http://localhost:9292/graffiti/'+ modal_graffiti,
+          data: {address: info.address, location_id: info.location_id, artist_id: info.artist_id, status: {id: info.id, open: true}},
+          success: function(){console.log('sent url')},
+          dataType: 'json'
+        })
+        $('p').text("Open");
+      }
+    })
     // $('#graffiti_image').popover({html: 'true', content: '<img src="'+photo+'"height="400" width="400">'});
     // $('#graffiti_image').popover('show');
 
