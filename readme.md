@@ -1,2 +1,2 @@
-DEFACE.NYC
+defaceNYC
 ==========
