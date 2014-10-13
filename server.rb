@@ -9,7 +9,6 @@ after do
 	ActiveRecord::Base.connection.close
 end
 
-
 get("/") do
 	File.open('./public/index.html')
 end
@@ -88,27 +87,14 @@ post("/graffiti/:id") do
 	graffiti_info.to_json(:include => :status)
 end
 
-<<<<<<< HEAD
 get("/images") do
 	content_type :json
 
 	Graffiti.where('photo_url is NOT NULL').to_json
 end	
-=======
-
-get("/images") do
-	content_type :json
-
-	Graffiti.where(id: params[:photo_url]).to_json
-end
->>>>>>> 857b690e904b8fd84e44669e6d8efbff9fd5e283
 
 get("/:borough") do
 	content_type :json
 
 	Graffiti.where(location_id: params[:borough]).to_json(:include => :status)
-<<<<<<< HEAD
 end
-=======
-end
->>>>>>> 857b690e904b8fd84e44669e6d8efbff9fd5e283
