@@ -16,11 +16,18 @@ end
 
 get("/graffiti") do
 	content_type :json
-
-	if(params[:limit] != nil)
-		Graffiti.all.order(id: :desc).limit(params[:limit].to_i).order(id: :desc).to_json
+	if(params[:page] == nil)
+		page=1
+		offset= (page-1)*(params[:limit].to_i)
 	else
-		Graffiti.all.order(id: :desc).to_json
+		page=params[:page].to_i
+		offset= (page-1)*(params[:limit].to_i)
+	end
+	if(params[:limit] != nil)
+		Graffiti.all.order(id: :desc).limit(params[:limit].to_i).offset(offset).order(id: :desc).to_json(:include => :status)
+	
+	else
+		Graffiti.all.order(id: :desc).to_json(:include => :status)
 	end
 
 end
@@ -35,6 +42,8 @@ end
 put("/graffiti/:id") do
 	content_type :json
 
+
+
 	graffiti_hash_edited = {
 		address:params["address"],
 		photo_url:params["photo_url"],
@@ -47,9 +56,15 @@ put("/graffiti/:id") do
 	edit_status.save
 
 	edit_graffiti = Graffiti.find_by({id: params[:id].to_i})
-	edit_graffiti_hash = edit_graffiti.update(graffiti_hash_edited)
 
-	edit_graffiti_hash.to_json
+
+	edit_status = Status.find(params[:status][:id])
+	edit_status.open = params[:status][:open]
+	edit_status.save
+
+	edit_graffiti.update(graffiti_hash_edited)
+	
+	edit_graffiti.to_json
 end
 
 post("/graffiti") do
@@ -63,6 +78,7 @@ post("/graffiti") do
 	}
 
 	new_graffiti = Graffiti.create(graffiti_hash_new)
+	new_status = Status.create({open:true})
 	new_graffiti.to_json
 end
 
@@ -72,15 +88,27 @@ post("/graffiti/:id") do
 	graffiti_info.to_json(:include => :status)
 end
 
+<<<<<<< HEAD
+get("/images") do
+	content_type :json
+
+	Graffiti.where('photo_url is NOT NULL').to_json
+end	
+=======
 
 get("/images") do
 	content_type :json
 
 	Graffiti.where(id: params[:photo_url]).to_json
 end
+>>>>>>> 857b690e904b8fd84e44669e6d8efbff9fd5e283
 
 get("/:borough") do
 	content_type :json
 
 	Graffiti.where(location_id: params[:borough]).to_json(:include => :status)
+<<<<<<< HEAD
 end
+=======
+end
+>>>>>>> 857b690e904b8fd84e44669e6d8efbff9fd5e283
