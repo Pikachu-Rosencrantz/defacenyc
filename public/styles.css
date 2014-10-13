@@ -1,8 +1,16 @@
-body{
-  background-image: url("http://38.media.tumblr.com/ed1c94286bb054319167dcbb5938abfc/tumblr_mhaynalY7y1qzbn7lo1_500.gif");
-  background-repeat: no-repeat;
+.intro-header {
+  background-color: #808080;
+  background: no-repeat center center;
+  background-attachment: scroll;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
   background-size: cover;
-  max-width: 600px;
+  -o-background-size: cover;
+  padding: 90px;
+}
+body{
+  background-repeat: no-repeat;
+  background-color: #1C1C1C;
 }
 h1{
   text-align: center;
@@ -88,7 +96,6 @@ h1{
 #splashScreen img{
     margin:0 auto;
 }
-
 #splashScreen{
     position:absolute;
     top:0;
