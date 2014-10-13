@@ -120,3 +120,7 @@ post("/subscribe") do
 
 	HTTParty.post(url, {body: params, basic_auth: auth})
 end
+
+#We need another route to handle future emails after our database gets updated
+# get("/subscribe/emails")
+# end
