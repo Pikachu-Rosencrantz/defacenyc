@@ -3,7 +3,7 @@ Bundler.require(:default)
 require_relative './config/environments'
 require_relative './lib/models'
 require 'active_support'
-require 'pry'
+# require 'pry'
 require 'uri'
 
 after do
