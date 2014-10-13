@@ -102,6 +102,7 @@ end
 
 post("/subscribe") do
 	binding.pry
+	# We need request.body.read to parse through params
 	name = params[:name]
 	email = params[:email]
 	graffiti_count = params[:graffiti_id]
