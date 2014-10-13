@@ -4,6 +4,7 @@ require_relative './config/environments'
 require_relative './lib/models'
 require 'active_support'
 require 'pry'
+require 'httparty'
 
 after do
 	ActiveRecord::Base.connection.close
@@ -24,7 +25,7 @@ get("/graffiti") do
 	end
 	if(params[:limit] != nil)
 		Graffiti.all.order(id: :desc).limit(params[:limit].to_i).offset(offset).order(id: :desc).to_json(:include => :status)
-	
+
 	else
 		Graffiti.all.order(id: :desc).to_json(:include => :status)
 	end
@@ -62,7 +63,7 @@ put("/graffiti/:id") do
 	edit_status.save
 
 	edit_graffiti.update(graffiti_hash_edited)
-	
+
 	edit_graffiti.to_json
 end
 
@@ -91,10 +92,30 @@ get("/images") do
 	content_type :json
 
 	Graffiti.where('photo_url is NOT NULL').to_json
-end	
+end
 
 get("/:borough") do
 	content_type :json
 
 	Graffiti.where(location_id: params[:borough]).to_json(:include => :status)
+end
+
+post("/subscribe") do
+	binding.pry
+	name = params[:name]
+	email = params[:email]
+	graffiti_count = params[:graffiti_id]
+
+	Subscriber.create({name: name, email: email, graffiti_id: graffiti_count})
+
+	params = {
+		from: "defaceNYC <postmaster@sandbox8e6d73b42a1944319bf616f4f09f722d.mailgun.org>",
+		to: email,
+		subject: "Thanks for subscribing to the coolest graffiti service around!"
+	}
+
+	url = "https://api.mailgun.net/v2/sandbox8e6d73b42a1944319bf616f4f09f722d.mailgun.org/messages"
+	auth = {:username=>"api", :password=>"key-7f1e23792ed85971de5368c4a92a0e42"}
+
+	HTTParty.post(url, {body: params, basic_auth: auth})
 end

@@ -16,3 +16,7 @@ end
 class Status < ActiveRecord::Base
   self.has_one(:graffiti)
 end
+
+class Subscriber < ActiveRecord::Base
+  
+end
