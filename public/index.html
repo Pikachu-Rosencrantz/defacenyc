@@ -1,8 +1,45 @@
 <html>
 <head>
+	<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+	<link href="/stylesheets/style.css" rel="stylesheet">
+	<script src="/javascripts/jquery.js"></script>
+	<script src="/javascripts/underscore.js"></script>
+	<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+	<script src="/javascripts/backbone.js"></script>
+	<script src="/javascripts/scripts.js"></script>
 	<title>DEFACE::NYC</title>
 </head>
 <body>
+	<select id="boroughs">
+		<option value="1">Brooklyn</option>
+		<option value="2">Bronx</option>
+		<option value="3">Manhattan</option>
+		<option value="4">Queens</option>
+		<option value="5">Staten Island</option>
+	</select>
+	<button id="go">Go</button>
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+				<button type="button" class="addImg">Add Image</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
 
+
+
+
+
+<script src="/javascripts/borough.js"></script>
 </body>
 </html>

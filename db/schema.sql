@@ -26,4 +26,3 @@ open boolean,
 resolution text,
 graffiti_id integer
 );
-

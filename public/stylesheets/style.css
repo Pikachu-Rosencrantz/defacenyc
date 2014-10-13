@@ -1,0 +1,34 @@
+body {
+  margin: 0 auto;
+  width: 60%;
+}
+
+table {
+  margin-top: 15px;
+}
+
+.modal-content {
+  background-color: #121212;
+  color: #FFF;
+}
+
+.modal-content input {
+  color: #000;
+}
+.modal img {
+  float:left;
+  margin-right: 30px;
+  border: 1px solid white;
+}
+
+.modal .popover {
+  max-height:400px !important;
+  max-width:400px !important;
+}
+.modal h6 p {
+  /*float: right;*/
+}
+
+.modal-footer {
+  border-top: hidden;
+}
