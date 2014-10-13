@@ -107,56 +107,105 @@ var ModalView = Backbone.View.extend({
 
 $(function(){
 	var GraffitiView = Backbone.View.extend({
-	tagName:"li",
-	events: {
-		
-	},
+		tagName:"li",
+		events: {
 
-	initialize: function(){
-		this.listenTo(this.model, 'change', this.render)
-		this.listenTo(this.model, 'destroy', this.remove)
-		
-	},
+		},
 
-	render:function(){
-		
-	  var innards = this.model.attributes.address
-		
-		this.$el.html(innards);
-	}
-})
+		initialize: function(){
+			this.listenTo(this.model, 'change', this.render)
+			this.listenTo(this.model, 'destroy', this.remove)
 
+		},
 
-var GraffitiListView = Backbone.View.extend({
+		render:function(){
+
+			var innards = this.model.attributes.address
+
+			this.$el.html(innards);
+		}
+	})
 
 
-	initialize: function(options){
+	var GraffitiListView = Backbone.View.extend({
+		events: {
+			'click a.nextPage': 'nextPage'
 
-
-		
-		this.listenTo(this.collection, "add", this.addOne)
-		this.collection.fetch()
-
-		
-	},
-	addOne: function(item){
-		
-
-			
-			var view = new GraffitiView({model: item})
-			view.render()
-			
-
-			this.$el.append(view.el)
+		},
+		nextPage: function(){
+			this.page += 1
+			console.log(this.page)
+			if(this.page <= this.pages){
+			var listView = new GraffitiListView({collection: graffitiCollection, el:'#graffitiList',limit:10, page:this.page, pages:this.pages})
+			}
 	
+		},
 
 
+		initialize: function(options){
+
+			this.limit = options.limit
+			this.page = options.page
+			this.pages = options.pages
+
+			console.log('initialized')
+			var that = this
+					
+					
+			this.collection.fetch({data: {limit:this.limit, page:this.page}}).done(function(){
+				that.$el.empty()
+				that.render()
+			})
+
+			
+
+		},
+		// addOne: function(item){
+		// 	console.log (item)
 		
-	}
+		// 	var view = new GraffitiView({model: item})
+		
+		// 	view.render()
+		// 	this.$el.append(view.el)
+			
+		// 	console.log(view.el)
+
+			
+			
+
+
+
+
+		// },
+		render: function(){
+			this.$el.append('<a href="#" class="nextPage">Next page</a>')
+			thatEl = this.$el
+			this.collection.forEach(function(address){
+				console.log(address)
+				thatEl.append('<li>'+address.attributes.address+'</li>')
+			})
+			this.delegateEvents()
+
+		}
+
+	})
+	var graffitiCollection = new GraffitiCollection()
+	var getCount = new GraffitiCollection()
+	getCount.fetch().done(function(){
+		console.log('hello')
+		var pages = Math.ceil(getCount.length/10)
+		
+		var page=1;
+		if(page <= pages){
+
+			var listView = new GraffitiListView({collection: graffitiCollection, el:'#graffitiList',limit:10, page:page, pages:pages})
+}
+
+
+
+
 
 })
-
-
 	var markers = []
 	var toggle = false
 	var map =  new google.maps.Map(document.getElementById('map-canvas'));

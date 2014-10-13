@@ -15,9 +15,16 @@ end
 
 get("/graffiti") do
 	content_type :json
-
+	if(params[:page] == nil)
+		page=1
+		offset= (page-1)*(params[:limit].to_i)
+	else
+		page=params[:page].to_i
+		offset= (page-1)*(params[:limit].to_i)
+	end
 	if(params[:limit] != nil)
-		Graffiti.all.order(id: :desc).limit(params[:limit].to_i).order(id: :desc).to_json(:include => :status)
+		Graffiti.all.order(id: :desc).limit(params[:limit].to_i).offset(offset).order(id: :desc).to_json(:include => :status)
+	
 	else
 		Graffiti.all.order(id: :desc).to_json(:include => :status)
 	end
