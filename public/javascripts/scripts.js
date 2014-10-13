@@ -83,16 +83,16 @@ var ModalView = Backbone.View.extend({
 		}
 		console.log(mapOptions)
 
-		var map = new google.maps.Map(document.getElementById("map-canvas-2"), mapOptions);
+		var map2 = new google.maps.Map(document.getElementById("map-canvas-2"), mapOptions);
 
 		var marker = new google.maps.Marker({
 			position: latlng,
-			map: map
+			map: map2
 		});
 
 		$("#basicModal").on("shown.bs.modal", function () {
 
-			google.maps.event.trigger(map, "resize");
+			google.maps.event.trigger(map2, "resize");
 			map.setCenter(latlng);
 		});
 
@@ -208,12 +208,13 @@ $(function(){
 // })
 	var markers = []
 	var toggle = false
-	var map =  new google.maps.Map(document.getElementById('map-canvas'));
+	 map =  new google.maps.Map(document.getElementById('map-canvas'));
 	var bounds = new google.maps.LatLngBounds();
+	mapCollection = new MapCollection() 
 
 	function makeMap(){
 		
-		mapCollection = new MapCollection() //initializing new map collection
+	//initializing new map collection
 		mapCollection.fetch().done(function(){//fetching map collection
 			addMarkers()
 			map.fitBounds(bounds)
@@ -325,6 +326,7 @@ $(function(){
 
 
 	})
+
 
 
 })

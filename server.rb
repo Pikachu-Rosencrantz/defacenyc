@@ -4,6 +4,7 @@ require_relative './config/environments'
 require_relative './lib/models'
 require 'active_support'
 require 'pry'
+require 'uri'
 
 after do
 	ActiveRecord::Base.connection.close
@@ -62,18 +63,22 @@ put("/graffiti/:id") do
 end
 
 post("/graffiti") do
+	api = HTTParty.get(URI.encode("https://maps.googleapis.com/maps/api/geocode/json?address=#{params[:address]}&key=AIzaSyBH66qMfXgrihEfE9HIDagtjdxIBn8N_Fc"))
+	latitude = api["results"][0]["geometry"]["location"]["lat"]
+	longitude = api["results"][0]["geometry"]["location"]["lng"]
 	content_type :json
 
 	graffiti_hash_new = {
 		address:params["address"],
 		photo_url:params["photo_url"],
 		location_id:params["location_id"],
-		artist_id: params["artist_id"]
+		latitude: latitude,
+		longitude: longitude
 	}
 
 	new_graffiti = Graffiti.create(graffiti_hash_new)
-	new_status = Status.create({open:true})
-	new_graffiti.to_json
+	new_status = Status.create({open:true, graffiti_id: new_graffiti.id})
+	new_graffiti.to_json(:include => :status)
 end
 
 get("/images") do

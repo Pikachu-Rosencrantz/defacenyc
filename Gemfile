@@ -10,3 +10,5 @@ gem "pg"
 gem "pry"
 gem "rack-parser"
 gem "activesupport"
+gem "geocoder"
+gem 'httparty'
