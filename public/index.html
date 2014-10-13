@@ -8,6 +8,7 @@
 	<script src='./javascripts/recent_images.js'></script>
 	<script src='./javascripts/post.js'></script>
 	<script src='./javascripts/borough.js'></script>
+	<link href='http://fonts.googleapis.com/css?family=Russo+One' rel='stylesheet' type='text/css'>
 
 	<link rel="stylesheet" type="text/css" href="./stylesheets/styles.css">
 	<link rel="stylesheet" href="http://bootswatch.com/cyborg/bootstrap.min.css">	<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
@@ -94,6 +95,7 @@
 								<div id="navbarCollapse" class="collapse navbar-collapse">
 									<ul class="nav navbar-nav"> 
 										<li class="active">	<select id="selectBorough">
+											<option value='default' selected='selected' disabled>Select Borough</option>
 											<option value="11">Brooklyn</option>
 											<option value="12">Bronx</option>
 											<option value="13">Manhattan</option>
@@ -104,7 +106,7 @@
 										<li><a href="#" id="addLocation">Add New Location</a></li>
 										<li><a href="#">About Us</a></li>
 										<li><a href="#">Subscribe</a></li>
-										<li><a href="#">Home</a></li>
+										<li><a href="#" class="goHome">Home</a></li>
 									</ul>
 								</div>
 
@@ -114,6 +116,8 @@
 
 					<div class="pictures col-md-10 col-md-offset-2">
 						<ul class="photos"></ul>
+					</div>
+					<div class="boroughData col-md-10 col-md-offset-2">
 					</div>
 					<div id="map" class='col-md-10 col-md-offset-2'>
 						<img src="./flame.png" id="makeHeat" data-toggle="tooltip" data-placement="right" title="Toggle Heat Map">

@@ -1,26 +1,43 @@
 $(function(){
 
   var submit_borough = $('#selectBorough');
-
+  var boroughDisplay = false;
   submit_borough.on('change', function(){
     var borough = $('#selectBorough').val();
     $('#locations').html(" ");
 
     $.get('/' + borough, function(data){
-      $('body').append('<table class="table table-striped" id="locations"></table>');
-      $('#locations').append('<tr data-toggle="modal" data-target="#myModal"><th>Address</th><th>Artist</th></tr>');
+
+      if(boroughDisplay == false){
+        $('#map').toggle('fade')
+        $('.boroughData').toggle()
+        boroughDisplay = true
+      }
+
+      $('.goHome').on('click', function(){
+        if(boroughDisplay == true){
+         $('#map').toggle('fade')
+         $('.boroughData').toggle()
+         boroughDisplay = false
+
+       }
+
+     })
+      $('boroughData').empty()
+      $('.boroughData').append('<table class="table table-striped" id="locations"></table>');
+      $('#locations').append('<tr data-toggle="modal" data-target="#myModal"><th>Address</th></tr>');
 
 
 
       for(var i=0;i<data.length;i++){
-        $('#locations').append('<tr id="'+ data[i]["id"] + '"><td>'+data[i]['address']+'</td>'+'<td>'+data[i]['artist_id']+'</td></tr>');
+        if(data[i][['address']]){
+          $('#locations').append('<tr id="'+ data[i]["id"] + '"><td>'+data[i]['address']+'</td></tr>');
+        }
       }
       $('tr').click(function(){
         var thatId = this.id
         var graffitiCollection = new GraffitiCollection()
         graffitiCollection.fetch().done(function(){
-
-          console.log(thatId)
 
           var graffiti = graffitiCollection.get(thatId)
           var modal = new ModalView({model: graffiti})
@@ -42,3 +59,18 @@ $(function(){
     })
 })
 })
+
+
+
+
+
+
+
+heroku pgbackups:restore DATABASE 'https://s3.amazonaws.com/ChampionGraph/deface.dump' --confirm fast-journey-9682
+
+
+
+
+
+
+

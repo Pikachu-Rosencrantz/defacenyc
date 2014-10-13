@@ -21,7 +21,7 @@ li{
 .popover {
     max-height:450px !important;
     max-width:450px !important;
-    z-index: 1010;
+    
 }
 .pictures{
 	display:none;
@@ -34,6 +34,9 @@ body{
   background-repeat: no-repeat;
   background-size: cover;
   max-width: 600px;
+}
+body.scrolled{
+	background:#fff;
 }
 h1{
 	color:#ffffff;
@@ -141,3 +144,10 @@ h1{
 .photos li{
 	display:inline;
 }
+.boroughData{
+	display:none;
+}
+tr{
+	cursor:pointer;
+}
+
