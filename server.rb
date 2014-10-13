@@ -101,18 +101,17 @@ get("/:borough") do
 end
 
 post("/subscribe") do
-	binding.pry
-	# We need request.body.read to parse through params
-	name = params[:name]
-	email = params[:email]
-	graffiti_count = params[:graffiti_id]
 
+	name = params["name"]
+	email = params["email"]
+	graffiti_count = Graffiti.last.id
 	Subscriber.create({name: name, email: email, graffiti_id: graffiti_count})
 
 	params = {
 		from: "defaceNYC <postmaster@sandbox8e6d73b42a1944319bf616f4f09f722d.mailgun.org>",
 		to: email,
-		subject: "Thanks for subscribing to the coolest graffiti service around!"
+		subject: "Thanks for subscribing to defaceNYC!",
+		text: "You will receive updates when our graffiti database has new images available!"
 	}
 
 	url = "https://api.mailgun.net/v2/sandbox8e6d73b42a1944319bf616f4f09f722d.mailgun.org/messages"

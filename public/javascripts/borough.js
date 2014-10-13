@@ -91,6 +91,26 @@ $('tr').click(function(){
  })
 })
 
+$('#subscribe').append("<input type='text' name='name' id='name'><input type='text' name='email' id='email'><button id='subscr'>Subscribe</button>");
+
+
+
+$('#subscr').click(function(){
+
+  var name = $('#name').val()
+  var email = $('#email').val()
+
+  $.ajax({
+    url: 'http://localhost:9292/subscribe',
+    type: "POST",
+    data: JSON.stringify({name: name, email: email }),
+    dataType: "json",
+    contentType: "application/json"
+  });
+
+})
+
+
 // var table_row = $('#table_row');
 // data[i].click(function(e){$('#myModal').modal('toggle'); console.log(e); console.log(this);
 // });
