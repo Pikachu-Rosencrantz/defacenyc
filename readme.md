@@ -5,7 +5,7 @@ defaceNYC is a web application allows users to view all reported graffiti locati
 
 Users are able filter by each Borough of New York City to see grafito in the corresponding Boroughs and their specific street address. Users can click each pin on the map and see the exact location of each piece of grafito. Users can add new pieces of grafito and edit information on existing ones (location, address details, and pictures of each grafito).
 
-defaceNYC was created as part of General Assembly's Web Development Immersive 5-day Sprint on October 2014. Team members include Conor Hastings, Nastasia Carmona, Jeff Campomanes, and Alex Fong.
+defaceNYC was created as part of General Assembly's Web Development Immersive 5-day Sprint on October 2014. Team members include Conor Hastings, Nastassia Carmona, Jeff Campomanes, and Alex Fong.
 
 Technologies Utilized: Backbone.js, jQuery, Javascript, Ruby, Sinatra, AJAX, HTML, CSS, Bootstrap, NYC Open Data API, Google Maps API.
 
