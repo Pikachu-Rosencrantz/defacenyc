@@ -16,7 +16,6 @@ end
 
 get("/graffiti") do
 	content_type :json
-
 	if(params[:page] == nil)
 		page=1
 		offset= (page-1)*(params[:limit].to_i)
@@ -33,6 +32,7 @@ get("/graffiti") do
 
 end
 
+# getting specific
 get("/graffiti/:id") do
 	content_type :json
 
@@ -80,7 +80,6 @@ post("/graffiti") do
 	new_status = Status.create({open:true, graffiti_id: new_graffiti.id})
 	new_graffiti.to_json(:include => :status)
 end
-
 
 get("/images") do
 	content_type :json
