@@ -119,3 +119,25 @@ post("/subscribe") do
 
 	HTTParty.post(url, {body: params, basic_auth: auth})
 end
+
+get("/subscribe/email") do
+	subscribers = Subscriber.all()
+	subscribers.each do |subscriber|
+		name = subscriber.name
+		email = subscriber.email
+		graffiti_count = subscriber.graffiti_id
+
+		params = {
+			from: "defaceNYC <postmaster@sandbox8e6d73b42a1944319bf616f4f09f722d.mailgun.org>",
+			to: email,
+			subject: "Fresh new graffiti images for you to consume!",
+			text: "You have #{Graffiti.last.id - graffiti_count} new images to check out at http://defacenyc.herokuapp.com/ !"
+		}
+
+		url = "https://api.mailgun.net/v2/sandbox8e6d73b42a1944319bf616f4f09f722d.mailgun.org/messages"
+		auth = {:username=>"api", :password=>"key-7f1e23792ed85971de5368c4a92a0e42"}
+
+		HTTParty.post(url, {body: params, basic_auth: auth})
+	end
+
+end
