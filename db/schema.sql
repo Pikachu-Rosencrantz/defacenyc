@@ -26,4 +26,9 @@ open boolean,
 resolution text,
 graffiti_id integer
 );
-
+CREATE TABLE subscribers(
+id serial primary key,
+name text,
+email text,
+graffiti_id integer
+);
