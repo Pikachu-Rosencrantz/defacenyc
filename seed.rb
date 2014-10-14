@@ -1,7 +1,7 @@
 
 require 'json'
-require 'pry'
-require_relative './connection'
+
+require_relative './dbconnection'
 
 class GraffitiArtist < ActiveRecord::Base
 
